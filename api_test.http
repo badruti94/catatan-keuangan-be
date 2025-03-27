@@ -26,10 +26,12 @@ GET http://localhost:5000/api/expenses?bulan=2025-02&sub_category_id=1
 
 
 ### Statistik total pengeluaran per kategori
-GET http://localhost:5000/api/stats?bulan=2025-02
+GET http://localhost:5000/api/stats?bulan=2025-03
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MzEwNDA2NCwiZXhwIjoxNzQzMTA3NjY0fQ.PNl8xkqUVxLnYvrbJ7jagb5R2yXLBv8OHrOetSlVsMY
 
 ### Statistik total pengeluaran per sub kategori dalam kategori tertentu
-GET http://localhost:5000/api/stats?bulan=2025-02&category_id=1
+GET http://localhost:5000/api/expenses?bulan=2025-03&category_id=13&sub_category_id=55
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MzEwNDA2NCwiZXhwIjoxNzQzMTA3NjY0fQ.PNl8xkqUVxLnYvrbJ7jagb5R2yXLBv8OHrOetSlVsMY
 
 
 ### Register User
@@ -42,7 +44,7 @@ Content-Type: application/json
 }
 
 ### Login User
-POST http://localhost:5000/api/auth/login
+POST https://catatan-keuangan-be.vercel.app/api/auth/login
 Content-Type: application/json
 
 {
@@ -52,4 +54,4 @@ Content-Type: application/json
 
 ### Akses Data (Butuh Token dari Login)
 GET http://localhost:3000/api/expenses
-Authorization: Bearer YOUR_JWT_TOKEN
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MzEwNDA2NCwiZXhwIjoxNzQzMTA3NjY0fQ.PNl8xkqUVxLnYvrbJ7jagb5R2yXLBv8OHrOetSlVsMY
