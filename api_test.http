@@ -1,0 +1,55 @@
+### Ambil semua kategori
+GET http://localhost:5000/api/categories
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0MzA5NzUzNCwiZXhwIjoxNzQzMTAxMTM0fQ.pIfM8xfOlZtiqafUcM07eUVNvMrUxoRzUgNvWA1s7Tg
+
+
+### Ambil sub kategori berdasarkan ID kategori
+GET http://localhost:5000/api/sub-categories?category_id=1
+
+### Tambah pengeluaran baru
+POST http://localhost:5000/api/expenses
+Content-Type: application/json
+
+{
+    "sub_category_id": 1,
+    "amount": 25000
+}
+
+### Ambil data pengeluaran berdasarkan bulan
+GET http://localhost:5000/api/expenses?bulan=2025-02
+
+### Ambil data pengeluaran berdasarkan bulan & kategori
+GET http://localhost:5000/api/expenses?bulan=2025-02&category_id=1
+
+### Ambil data pengeluaran berdasarkan bulan, kategori & sub kategori
+GET http://localhost:5000/api/expenses?bulan=2025-02&sub_category_id=1
+
+
+### Statistik total pengeluaran per kategori
+GET http://localhost:5000/api/stats?bulan=2025-02
+
+### Statistik total pengeluaran per sub kategori dalam kategori tertentu
+GET http://localhost:5000/api/stats?bulan=2025-02&category_id=1
+
+
+### Register User
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+### Login User
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+### Akses Data (Butuh Token dari Login)
+GET http://localhost:3000/api/expenses
+Authorization: Bearer YOUR_JWT_TOKEN
