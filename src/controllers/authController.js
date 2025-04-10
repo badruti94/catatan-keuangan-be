@@ -32,12 +32,12 @@ exports.login = async (req, res) => {
 
 exports.register = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { username, password } = req.body;
 
         // Cek apakah email sudah terdaftar
-        const existingUser = await User.findOne({ where: { email } });
+        const existingUser = await User.findOne({ where: { username } });
         if (existingUser) {
-            return res.status(400).json({ message: "Email sudah digunakan" });
+            return res.status(400).json({ message: "Username sudah digunakan" });
         }
 
         // Hash password sebelum menyimpan ke database
@@ -46,8 +46,7 @@ exports.register = async (req, res) => {
 
         // Simpan user baru
         const newUser = await User.create({
-            name,
-            email,
+            username,
             password: hashedPassword, // Simpan password yang sudah di-hash
         });
 

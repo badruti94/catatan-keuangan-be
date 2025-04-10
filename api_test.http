@@ -39,8 +39,8 @@ POST https://catatan-keuangan-be.vercel.app/api/auth/register
 Content-Type: application/json
 
 {
-  "username": "admin",
-  "password": "admin123"
+  "username": "chai",
+  "password": "chai123"
 }
 
 ### Login User
