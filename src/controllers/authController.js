@@ -28,3 +28,32 @@ exports.login = async (req, res) => {
         res.status(500).json({ message: "Gagal login", error });
     }
 };
+
+
+exports.register = async (req, res) => {
+    try {
+        const { name, email, password } = req.body;
+
+        // Cek apakah email sudah terdaftar
+        const existingUser = await User.findOne({ where: { email } });
+        if (existingUser) {
+            return res.status(400).json({ message: "Email sudah digunakan" });
+        }
+
+        // Hash password sebelum menyimpan ke database
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+        // Simpan user baru
+        const newUser = await User.create({
+            name,
+            email,
+            password: hashedPassword, // Simpan password yang sudah di-hash
+        });
+
+        res.status(201).json({ message: "Registrasi berhasil", userId: newUser.id });
+    } catch (error) {
+        console.error("Error saat registrasi:", error);
+        res.status(500).json({ message: "Terjadi kesalahan server" });
+    }
+};
