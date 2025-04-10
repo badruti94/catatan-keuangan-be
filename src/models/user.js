@@ -15,8 +15,8 @@ const User = sequelize.define("User", {
 }, {timestamps: false, tableName: 'users'});
 
 // Hook untuk hashing password sebelum menyimpan ke DB
-User.beforeCreate(async (user) => {
-    user.password = await bcrypt.hash(user.password, 10);
-});
+// User.beforeCreate(async (user) => {
+//     user.password = await bcrypt.hash(user.password, 10);
+// });
 
 module.exports = User;
